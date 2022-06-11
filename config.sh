@@ -11,7 +11,7 @@ function divider(){
 function showNotInstalledTools(){
     if [ ${#APPS_NOT_FOUND[@]} -gt 0 ]; then
         echo -e "\n😱 Not installed tools:"
-        echo -e "${APPS_NOT_FOUND[@]}"
+        echo -e "${APPS_NOT_FOUND[@]}\n"
     fi
 }
 
