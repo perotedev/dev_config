@@ -4,7 +4,18 @@ AVAILABLE_SCRIPTS=()
 APPS_NOT_FOUND=()
 APPS_INSTALLEDS=()
 
-checksIfAppIsInstalled(){
+function divider(){
+    echo -e "\n###################################################"
+}
+
+function showNotInstalledTools(){
+    if [ ${#APPS_NOT_FOUND[@]} -gt 0 ]; then
+        echo -e "\n😱 Not installed tools:"
+        echo -e "${APPS_NOT_FOUND[@]}"
+    fi
+}
+
+function checksIfAppIsInstalled(){
     SEARCH="$(dpkg-query --show -f='${Status} ${Version}\n' $1 2>/dev/null)"
 
     if [[ "$SEARCH" == *"ok installed"* ]]; then
@@ -13,22 +24,24 @@ checksIfAppIsInstalled(){
         echo -e "\e[0;32m* $1\e[00m - $VERSION_APP"
     else
         APPS_NOT_FOUND+=("$1")
-        echo -e "\e[0;31m* $1\e[00m - not installed"
+        # echo -e "\e[0;31m* $1\e[00m - not installed"
     fi
     sleep 1
 }
 
-checksInstalledsApps(){
+function checksInstalledsApps(){
     echo -e "\n🧐 Checking installed tools..."
 
     for element in "${AVAILABLE_SCRIPTS[@]}"; do
         checksIfAppIsInstalled $element
     done
+    
+    showNotInstalledTools
 }
  
-checksAvailableAppScripts(){
+function checksAvailableAppScripts(){
     SEARCH_DIR=./apps_scripts
-    echo -e "\n🧐 Checking available scripts..."
+    echo -e "\n😁 Checking available scripts..."
 
     for element in "$SEARCH_DIR"/*; do
         SCRIPT_NAME="${element//'./apps_scripts/'/}"
@@ -39,7 +52,6 @@ checksAvailableAppScripts(){
         sleep 1
     done
 }
-
 
 checksAvailableAppScripts
 checksInstalledsApps
