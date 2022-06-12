@@ -30,7 +30,7 @@ function installTools(){
         $SCRIPTS_FOLDER/nvm.sh
     fi
 
-    ############## install angular-cli #############
+    ########### install angular-cli ###########
     if [[ "${SELECTED_TOOLS[@]}" =~ "angular-cli" ]]; then
         $SCRIPTS_FOLDER/angular-cli.sh
     fi
@@ -78,6 +78,11 @@ function installTools(){
     ############## install zsh #############
     if [[ "${SELECTED_TOOLS[@]}" =~ "zsh" ]]; then
         $SCRIPTS_FOLDER/zsh.sh
+    fi
+
+    ############ install spotify ############
+    if [[ "${SELECTED_TOOLS[@]}" =~ "spotify" ]]; then
+        $SCRIPTS_FOLDER/spotify.sh
     fi
 }
 

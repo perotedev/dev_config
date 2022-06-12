@@ -49,7 +49,7 @@ function checksAvailableAppScripts(){
 
 function checkIfAllIsInstalled(){
     if [ ${#APPS_NOT_INSTALLED[@]} -gt 0 ]; then
-        echo -e "\n"
+        echo -e ""
         read -n 1 -s -r -p "Press any key to continue... "
         ./config.sh ${APPS_NOT_INSTALLED[@]}
     else

@@ -4,9 +4,23 @@ TOOLS_TO_INSTALL=( "$@" )
 MENU_OPTIONS=()
 SELECTED_TOOLS=()
 
+function rebootToApplyChanges(){
+    local option=${1^^}
+
+    case $option in
+        "Y") echo -e "Restarting your PC now, please wait...\n" && reboot ;;
+        "N") echo -e "Restart your computer manually as soon as possible...\n" ;;
+        *) echo -e "Restart your computer manually as soon as possible...\n" ;;
+    esac
+}
+
 function installTools(){
-    sudo ./install.sh ${SELECTED_TOOLS[@]}
+    ./install.sh ${SELECTED_TOOLS[@]}
     echo -e "\n😇 Install process complete!\n"
+
+    echo -ne "\e[0;33m>> You need to restart your computer to finish some settings. Do it now? [Y/N]:\e[00m "
+    read decision
+    rebootToApplyChanges $decision
 }
 
 function filterSelectedTools(){
