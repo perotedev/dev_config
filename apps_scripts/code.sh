@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "Checking snapd package for install code..."
+echo -e "\nChecking snapd package for install code..."
 
 SEARCH="$(dpkg-query --show -f='${Status} ${Version}\n' snapd 2>/dev/null)"
 

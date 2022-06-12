@@ -19,7 +19,6 @@ function installAndroidStudio(){
     sleep 0.500
     sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386 -y
     curl --location --request GET "https://drive.google.com/uc?export=download&id=1-n9H48iSAGB2Y2OB0iS4zhVOytEkcG4G" --output android-studio.tar.gz
-    curl --location --request GET "https://drive.google.com/uc?export=download&id=1GEwQCRaO-PiJMsguV4qqG82u-zYVr-U9" --output lombok.tar.gz
     sudo mv android-studio.tar.gz /opt/
     cd /opt && sudo tar -xvzf android-studio.tar.gz
     cd $ACTUAL_DIRECTORY

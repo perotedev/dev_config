@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "Checking npm package for install angular-cli..."
+echo -e "\nChecking npm package for install angular-cli..."
 
 SEARCH="$(dpkg-query --show -f='${Status} ${Version}\n' npm 2>/dev/null)"
 
