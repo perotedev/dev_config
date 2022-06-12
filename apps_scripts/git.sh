@@ -14,6 +14,7 @@ function readGitUser(){
 function setGitUser(){
     git config --global user.name "$USERGIT"
     git config --global user.email "$EMAIL_USERGIT"
+    git config --global credential.helper store
 }
 
 function confirmUserGit(){
