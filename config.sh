@@ -3,20 +3,9 @@
 TOOLS_TO_INSTALL=( "$@" )
 MENU_OPTIONS=()
 SELECTED_TOOLS=()
-SCRIPTS_FOLDER="./apps_scripts"
 
-# scripts sequence order
 function installTools(){
-    # install git
-    if [[ "${SELECTED_TOOLS[@]}" =~ "git" ]]; then
-        sudo $SCRIPTS_FOLDER/git.sh
-    fi
-
-    # install htop
-    if [[ "${SELECTED_TOOLS[@]}" =~ "htop" ]]; then
-        sudo $SCRIPTS_FOLDER/htop.sh
-    fi
-
+    sudo ./install.sh ${SELECTED_TOOLS[@]}
     echo -e "\n😇 Install process complete!\n"
 }
 
@@ -50,7 +39,7 @@ function selectToolsMenu(){
     if [ $status = 0 ]; then
         filterSelectedTools $selecteds
     else
-        echo -e "Script closed!\n"
+        echo -e "😵 Script closed!\n"
     fi
 }
 
