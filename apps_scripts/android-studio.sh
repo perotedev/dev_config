@@ -15,7 +15,7 @@ function createDesktopIcon(){
 }
 
 function installAndroidStudio(){
-    echo -e "\n\e[01;32m---|\e[00m Installing \e[01;33mstudio\e[00m package..."
+    echo -e "\n\e[01;32m---|\e[00m Installing \e[01;33mandroid-studio\e[00m package..."
     sleep 0.500
     sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386 -y
     curl --location --request GET "https://r2---sn-gpv7kn7d.gvt1.com/edgedl/android/studio/ide-zips/2021.2.1.15/android-studio-2021.2.1.15-linux.tar.gz?mh=BA&pl=25&shardbypass=sd&redirect_counter=1&cm2rm=sn-5jupvopo4v-h5ve7z&req_id=7cef7bec5ff034e7&cms_redirect=yes&mip=170.246.227.251&mm=42&mn=sn-gpv7kn7d&ms=onc&mt=1655048946&mv=u&mvi=2&rmhost=r4---sn-gpv7kn7d.gvt1.com" --output android-studio.tar.gz

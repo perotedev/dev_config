@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "\nChecking snapd package for install code..."
+echo -e "\nChecking snapd package for install vscode..."
 
 SEARCH="$(dpkg-query --show -f='${Status} ${Version}\n' snapd 2>/dev/null)"
 
@@ -9,7 +9,7 @@ function error(){
 }
 
 if [[ "$SEARCH" == *"ok installed"* ]]; then
-    echo -e "\n\e[01;32m---|\e[00m Installing \e[01;33mcode\e[00m package..."
+    echo -e "\n\e[01;32m---|\e[00m Installing \e[01;33mvscode\e[00m package..."
     sleep 0.500
     sudo snap install --classic code
 else
