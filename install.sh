@@ -61,9 +61,9 @@ function installTools(){
         setInstalledCount $?
     fi
 
-    ############## install code ############# ok
-    if [[ "${SELECTED_TOOLS[@]}" =~ "code" ]]; then
-        $SCRIPTS_FOLDER/code.sh
+    ############## install vscode ############# ok
+    if [[ "${SELECTED_TOOLS[@]}" =~ "vscode" ]]; then
+        $SCRIPTS_FOLDER/vscode.sh
         setInstalledCount $?
     fi
     
@@ -79,9 +79,9 @@ function installTools(){
         setInstalledCount $?
     fi
 
-    ############## install studio ############# ok
-    if [[ "${SELECTED_TOOLS[@]}" =~ "studio" ]]; then
-        $SCRIPTS_FOLDER/studio.sh
+    ############## install android-studio ############# ok
+    if [[ "${SELECTED_TOOLS[@]}" =~ "android-studio" ]]; then
+        $SCRIPTS_FOLDER/android-studio.sh
         setInstalledCount $?
     fi
 
