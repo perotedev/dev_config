@@ -1,74 +1,57 @@
 #!/bin/bash
 
-AVAILABLE_SCRIPTS=()
-APPS_NOT_FOUND=()
-APPS_INSTALLEDS=()
+TOOLS_TO_INSTALL=( "$@" )
+MENU_OPTIONS=()
+SELECTED_TOOLS=()
+SCRIPTS_FOLDER="./apps_scripts"
 
-function showNotInstalledTools(){
-    if [ ${#APPS_NOT_FOUND[@]} -gt 0 ]; then
-        echo -e "\n😱 Not installed tools:"
-
-        for element in "${APPS_NOT_FOUND[@]}"; do
-            echo -e "\e[0;31m* $element\e[00m"
-        done
-
-        echo -e ">> ${#APPS_NOT_FOUND[@]} not installed tools!"
-    fi
-}
-
-function checksIfAppIsInstalled(){
-    SEARCH="$(dpkg-query --show -f='${Status} ${Version}\n' $1 2>/dev/null)"
-
-    if [[ "$SEARCH" == *"ok installed"* ]]; then
-        VERSION_APP="${SEARCH//'install ok '/}"
-        APPS_INSTALLEDS+=("$1")
-        echo -e "\e[0;32m* $1\e[00m - $VERSION_APP"
-    else
-        APPS_NOT_FOUND+=("$1")
-        # echo -e "\e[0;31m* $1\e[00m - not installed"
-    fi
-    sleep 0.500
-}
-
-function checksInstalledsApps(){
-    echo -e "\n🧐 Checking installed tools..."
-
-    for element in "${AVAILABLE_SCRIPTS[@]}"; do
-        checksIfAppIsInstalled $element
-    done
-    
-    echo -e ">> ${#APPS_INSTALLEDS[@]} installed tools!"
-    
-    showNotInstalledTools
-}
- 
-function checksAvailableAppScripts(){
-    echo -e "\n😁 Checking available scripts..."
-    SEARCH_DIR=./apps_scripts
-    SCRIPTS_COUNT=0
-
-    for element in "$SEARCH_DIR"/*; do
-        SCRIPT_NAME="${element//'./apps_scripts/'/}"
-        echo -ne "\e[0;33m* $SCRIPT_NAME\e[00m                     \r"
-
-        SCRIPT_NAME="${SCRIPT_NAME//'.sh'/}"
-        AVAILABLE_SCRIPTS+=("$SCRIPT_NAME")
-        SCRIPTS_COUNT=$(expr $SCRIPTS_COUNT + 1)
-        sleep 1
-    done
-
-    echo -e ">> $SCRIPTS_COUNT availables scripts!                            \r"
-}
-
+# scripts sequence order
 function installTools(){
+    # install git
+    if [[ "${SELECTED_TOOLS[@]}" =~ "git" ]]; then
+        sudo $SCRIPTS_FOLDER/git.sh
+    fi
 
+    # install htop
+    if [[ "${SELECTED_TOOLS[@]}" =~ "htop" ]]; then
+        sudo $SCRIPTS_FOLDER/htop.sh
+    fi
+
+    echo -e "\n😇 Install process complete!\n"
 }
 
-function selectToolsForInstall(){
-    
+function filterSelectedTools(){
+    local selected_options=( "$@" )
+
+    for option in "${selected_options[@]}"; do
+        SELECTED_TOOLS+=("${TOOLS_TO_INSTALL[$(expr $option - 1)]}")
+    done
+
+    installTools
 }
 
-checksAvailableAppScripts
-checksInstalledsApps
+function setMenuOptions(){
+    local list_count=1
 
-# echo -e "\n${AVAILABLE_SCRIPTS[@]}"
+    for tool in "${TOOLS_TO_INSTALL[@]}"; do
+        MENU_OPTIONS+=($list_count "$tool  " on)
+        list_count=$(expr $list_count + 1)
+    done
+}
+
+function selectToolsMenu(){
+    cmd=(whiptail --title "Select tools to install" --ok-button "Install" --notags --checklist "Press 'tab' to navigate in menu and 'space' to select/deselect a tool" 16 40 8)
+    setMenuOptions
+    choices=$("${cmd[@]}" "${MENU_OPTIONS[@]}" 2>&1 >/dev/tty)
+    status=$?
+    clear
+    selecteds=${choices//'"'/}
+
+    if [ $status = 0 ]; then
+        filterSelectedTools $selecteds
+    else
+        echo -e "Script closed!\n"
+    fi
+}
+
+selectToolsMenu
