@@ -23,7 +23,11 @@ function setInstalledCount(){
 
 # scripts sequence order
 function installTools(){
-    sudo apt update
+
+    if [ ${#SELECTED_TOOLS[@]} -gt 0 ]; then
+        echo -e "\n\e[01;32m---|\e[00m Updating repositories..."
+        sudo apt update
+    fi
 
     ############## install git ############## ok
     if [[ "${SELECTED_TOOLS[@]}" =~ "git" ]]; then
@@ -104,7 +108,11 @@ function installTools(){
 }
 
 function finishScript(){
-    echo -e "\n😇 Install process complete!\n"
+    if [ ${#SELECTED_TOOLS[@]} -gt 0 ]; then
+        echo -e "\n😇 Install process complete!\n"
+    else
+        echo -e "\n😵 You have not selected tools to install!\n"
+    fi
 
     if [ $INSTALLEDS_TOOLS -gt 0 ]; then
         echo -ne "\e[0;33m>> You need to restart your computer to finish some settings. Do it now? [Y/N]:\e[00m "
