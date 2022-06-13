@@ -36,7 +36,7 @@ function error(){
 }
 
 if [ -f "/opt/android-studio/bin/studio.sh" ]; then
-    echo -e "\n\e[0;36m* The \e[0;33mandroid-studio\e[0;36m package allready installed!\e[00m"
+    echo -e "\n\e[0;36m* The \e[0;33mandroid-studio\e[0;36m package already installed!\e[00m"
     error
 else
     installAndroidStudio

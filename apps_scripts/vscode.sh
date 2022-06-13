@@ -63,10 +63,19 @@ function error(){
 }
 
 if [[ "$SEARCH" == *"ok installed"* ]]; then
-    echo -e "\n\e[01;32m---|\e[00m Installing \e[01;33mvscode\e[00m package..."
-    sleep 0.500
-    sudo snap install --classic code
-    installExtensions
+    path_script=$(pwd)
+    path_script="${path_script//'/apps_scripts'}"
+    $path_script/checks_pkg_snapd.sh "code"
+    status=$?
+
+    if [ $status == 0 ]; then
+        error
+    else
+        echo -e "\n\e[01;32m---|\e[00m Installing \e[01;33mvscode\e[00m package..."
+        sleep 0.500
+        sudo snap install --classic code
+        installExtensions  
+    fi
 else
     echo -e "\e[0;31m* You need to have snapd to install code!\e[00m"
     error
