@@ -11,7 +11,6 @@ function error(){
 if [[ "$SEARCH" == *"ok installed"* ]]; then
     echo -e "\n\e[01;32m---|\e[00m Installing \e[01;33mpostman\e[00m package..."
     sleep 0.500
-    sudo rm /etc/apt/preferences.d/nosnap.pref
     sudo apt update
     sudo snap install postman
 else

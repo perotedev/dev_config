@@ -28,43 +28,36 @@ function installTools(){
     ############## install git ############## ok
     if [[ "${SELECTED_TOOLS[@]}" =~ "git" ]]; then
         $SCRIPTS_FOLDER/git.sh
-        setInstalledCount $?
     fi
 
     ############## install htop ############## ok
     if [[ "${SELECTED_TOOLS[@]}" =~ "htop" ]]; then
         $SCRIPTS_FOLDER/htop.sh
-        setInstalledCount $?
     fi
 
     ############### install vim ############## ok
     if [[ "${SELECTED_TOOLS[@]}" =~ "vim" ]]; then
         $SCRIPTS_FOLDER/vim.sh
-        setInstalledCount $?
     fi
 
     ############## install npm ############## ok
     if [[ "${SELECTED_TOOLS[@]}" =~ "npm" ]]; then
         $SCRIPTS_FOLDER/npm.sh
-        setInstalledCount $?
     fi
 
     ########### install angular-cli ########### ok
     if [[ "${SELECTED_TOOLS[@]}" =~ "angular-cli" ]]; then
         $SCRIPTS_FOLDER/angular-cli.sh
-        setInstalledCount $?
     fi
 
     ############## install snapd ############# ok
     if [[ "${SELECTED_TOOLS[@]}" =~ "snapd" ]]; then
         $SCRIPTS_FOLDER/snapd.sh
-        setInstalledCount $?
     fi
 
     ############## install vscode ############# ok
     if [[ "${SELECTED_TOOLS[@]}" =~ "vscode" ]]; then
         $SCRIPTS_FOLDER/vscode.sh
-        setInstalledCount $?
     fi
     
     ############## install docker ############# ok
@@ -82,37 +75,31 @@ function installTools(){
     ############## install android-studio ############# ok
     if [[ "${SELECTED_TOOLS[@]}" =~ "android-studio" ]]; then
         $SCRIPTS_FOLDER/android-studio.sh
-        setInstalledCount $?
     fi
 
     ############## install postman ############# ok
     if [[ "${SELECTED_TOOLS[@]}" =~ "postman" ]]; then
         $SCRIPTS_FOLDER/postman.sh
-        setInstalledCount $?
     fi
 
     ############## install scrcpy ############# ok
     if [[ "${SELECTED_TOOLS[@]}" =~ "scrcpy" ]]; then
         $SCRIPTS_FOLDER/scrcpy.sh
-        setInstalledCount $?
     fi
 
     ########## install brave-browser ########## ok
     if [[ "${SELECTED_TOOLS[@]}" =~ "brave-browser" ]]; then
         $SCRIPTS_FOLDER/brave-browser.sh
-        setInstalledCount $?
     fi
 
     ######### install speedtest-cli ######### ok
     if [[ "${SELECTED_TOOLS[@]}" =~ "speedtest-cli" ]]; then
         $SCRIPTS_FOLDER/speedtest-cli.sh
-        setInstalledCount $?
     fi
     
     ############## install zsh ############# ok
     if [[ "${SELECTED_TOOLS[@]}" =~ "zsh" ]]; then
         $SCRIPTS_FOLDER/zsh.sh
-        setInstalledCount $?
     fi
 }
 

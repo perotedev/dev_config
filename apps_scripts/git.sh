@@ -1,8 +1,13 @@
 #!/bin/bash
 
-echo -e "\n\e[01;32m---|\e[00m Installing \e[01;33mgit\e[00m package..."
-sleep 0.500
-sudo apt-get install git -y
+path_script=$(pwd)
+path_script="${path_script//'/apps_scripts'}"
+$path_script/checks_pkg_dpkg.sh "git"
+status=$?
+
+function error(){
+    return 1
+}
 
 function readGitUser(){
     echo -ne "\n* Type an \e[0;33musername\e[00m for git: "
@@ -53,5 +58,12 @@ function actionByDecision(){
 
 }
 
-readGitUser
-confirmUserGit
+if [ $status == 0 ]; then
+    error
+else 
+    echo -e "\n\e[01;32m---|\e[00m Installing \e[01;33mgit\e[00m package..."
+    sleep 0.500
+    sudo apt-get install git -y
+    readGitUser
+    confirmUserGit
+fi

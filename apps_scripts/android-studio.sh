@@ -31,9 +31,19 @@ function installLombokPlugin(){
     cd $ACTUAL_DIRECTORY
 }
 
-installAndroidStudio
-installLombokPlugin
-createDesktopIcon
+function error(){
+    return 1
+}
+
+if [ -f "/opt/android-studio/bin/studio.sh" ]; then
+    echo -e "\n\e[0;36m* The \e[0;33mandroid-studio\e[0;36m package allready installed!\e[00m"
+    error
+else
+    installAndroidStudio
+    installLombokPlugin
+    createDesktopIcon
+fi
+
 
 # https://drive.google.com/file/d/1GEwQCRaO-PiJMsguV4qqG82u-zYVr-U9/view   - lombok
 # https://drive.google.com/file/d/1-n9H48iSAGB2Y2OB0iS4zhVOytEkcG4G/view   - android-studio
