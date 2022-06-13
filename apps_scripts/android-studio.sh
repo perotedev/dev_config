@@ -36,7 +36,8 @@ function error(){
 }
 
 if [ -f "/opt/android-studio/bin/studio.sh" ]; then
-    echo -e "\n\e[0;36m* The \e[0;33mandroid-studio\e[0;36m package already installed!\e[00m"
+    version=$(cat /opt/android-studio/build.txt)
+    echo -e "\n\e[0;36m* The \e[0;33mandroid-studio\e[0;36m package already installed in version \e[0;33m$version\e[00m"
     error
 else
     installAndroidStudio
