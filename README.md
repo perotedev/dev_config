@@ -6,7 +6,7 @@ The purpose of this script is to configure the development environment with tool
 
 Clone the repository
 ```bash
-git clone https://github.com/perotedev/dev_config_ubuntu.git
+git clone https://github.com/perotedev/dev_config.git
 ```
 
 To start, enter in  repository root and type the follow command
