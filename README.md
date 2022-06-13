@@ -14,7 +14,7 @@ To start, enter in  repository root and type the follow command
 ./app.sh # this starts the script
 ```
 
-Choose to install only tools that interest you
+Choose to install only tools that interest you <br>
 <img alt="menu_img" src="./menu_img.jpg"/> <br> <br>
 
 
