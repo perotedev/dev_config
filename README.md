@@ -32,6 +32,9 @@ Brave is a free and open source web browser developed by Brave Software Inc. The
 ***---\ Docker / Docker-Compose*** <br>
 Docker is a set of platform-as-a-service products that use operating system-level virtualization to deliver software in packages called containers. Containers are isolated from each other and bundle their own software, libraries, and configuration files.
 
+***---\ AnyDesk*** <br>
+AnyDesk is a closed source remote desktop application distributed by AnyDesk Software GmbH. The proprietary software program provides platform independent remote access to personal computers and other devices running the host application. AnyDesk is frequently used by scammers. It offers remote control, file transfer, and VPN functionality. 
+
 ***---\ Git*** <br>
 Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 
