@@ -81,6 +81,11 @@ function installTools(){
         $SCRIPTS_FOLDER/android-studio.sh
     fi
 
+    ############## install anydesk ############# ok
+    if [[ "${SELECTED_TOOLS[@]}" =~ "anydesk" ]]; then
+        $SCRIPTS_FOLDER/anydesk.sh
+    fi
+
     ############## install postman ############# ok
     if [[ "${SELECTED_TOOLS[@]}" =~ "postman" ]]; then
         $SCRIPTS_FOLDER/postman.sh
