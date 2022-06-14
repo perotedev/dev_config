@@ -101,6 +101,11 @@ function installTools(){
         $SCRIPTS_FOLDER/brave-browser.sh
     fi
 
+    ########## install filezilla ########## ok
+    if [[ "${SELECTED_TOOLS[@]}" =~ "filezilla" ]]; then
+        $SCRIPTS_FOLDER/filezilla.sh
+    fi
+
     ######### install speedtest-cli ######### ok
     if [[ "${SELECTED_TOOLS[@]}" =~ "speedtest-cli" ]]; then
         $SCRIPTS_FOLDER/speedtest-cli.sh
