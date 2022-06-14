@@ -20,3 +20,7 @@ else
     sudo apt update
     sudo apt-get install anydesk -y
 fi
+
+#  this is if anydesk service don1t works: file libpangox not found 
+#  wget http://ftp.us.debian.org/debian/pool/main/p/pangox-compat/libpangox-1.0-0_0.0.2-5.1_amd64.deb
+#  sudo apt install ./libpangox-1.0-0_0.0.2-5.1_amd64.deb
